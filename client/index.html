@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Behavior Analysis Demo</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- MediaPipe FaceMesh (Pinned to stable version) -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh@0.4.1633559619/face_mesh.js"
+        crossorigin="anonymous"></script>
+    <!-- MediaPipe Camera Utils -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3.1640029074/camera_utils.js"
+        crossorigin="anonymous"></script>
+    <!-- MediaPipe Drawing Utils -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.3.1620248257/drawing_utils.js"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Behavioral Analysis System</h1>
+    </header>
+
+    <div class="container">
+        <div class="video-container">
+            <video id="input_video"></video>
+            <canvas id="output_canvas"></canvas>
+        </div>
+
+        <div class="controls">
+            <button id="startBtn">Start Session</button>
+            <button id="stopBtn" disabled>Stop Session</button>
+        </div>
+
+        <div class="status-panel">
+            <div class="status-item">
+                <span class="status-label">Status:</span>
+                <span id="connectionStatus" class="status-value" style="color: #888;">Idle</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Eye Contact:</span>
+                <span id="eyeContactPct" class="status-value"
+                    style="color: #4caf50; font-size: 1.2rem; font-weight: bold;">--%</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Packets Sent:</span>
+                <span id="packetCount" class="status-value">0</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Time Elapsed:</span>
+                <span id="timer" class="status-value">00:00</span>
+            </div>
+            <div id="calibrationStatus" class="status-item hidden">
+                <span class="status-label">Calibration:</span>
+                <span id="calibrationProgress" class="status-value" style="color: #ff9800;">In Progress...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Logic -->
+    <script src="app.js"></script>
+</body>
+
+</html>
